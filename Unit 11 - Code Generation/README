@@ -1,0 +1,33 @@
+bartsimp, lisasimp
+===============================================================================
+Bart Simpson, ID 011111111, bart@mail.huji.ac.il
+Lisa Simpson, ID 022222222, lisa@mail.huji.ac.il
+===============================================================================
+
+                           Project 11 - Compilation, Continued
+                           -----------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+JackCompiler - The executable.
+Makefile - A makefile for the project.
+JackCompiler.py - Main file for ex11, just runs compile class in the comp engine.
+JackTokenizer.py - same as ex10
+CompilationEngine.py - change the work of the ex10 function, additionally we added sets and helper methods in order
+to make our code more readable.
+VMWriter.py - simple write methods.
+SymbolTable.py - keep the subroutine scope and the class scope with some methods as Shimon explained in the vids.
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.

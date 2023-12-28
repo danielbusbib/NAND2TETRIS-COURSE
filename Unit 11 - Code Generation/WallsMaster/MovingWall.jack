@@ -1,0 +1,54 @@
+class MovingWall {
+    field Wall upperWall;
+    field Wall lowerWall;
+    field int direction; // 0 for down, 1 for up
+
+    constructor MovingWall new(Wall upper, Wall lower) {
+        let upperWall = upper;
+        let lowerWall = lower;
+        let direction = 0;
+        return this;
+    }
+
+    method Wall getLowerWall() {
+        return lowerWall;
+    }
+
+    method Wall getUpperWall() {
+        return upperWall;
+    }
+
+    method void move() {
+        var int oldUpperSizeY;
+        var int oldLowerSizeY;
+        var int oldLowerY;
+        var int oldUpperY;
+        let oldUpperSizeY = upperWall.getSizeY();
+        let oldLowerSizeY = lowerWall.getSizeY();
+        let oldLowerY = lowerWall.getY();
+        let oldUpperY = upperWall.getY();
+        if(lowerWall.getY() > 250) { // no more room to go down
+            let direction = 1;
+        }
+        else {
+            if(upperWall.getY() + upperWall.getSizeY() < 5) { // no more room to go up 
+                let direction = 0;
+            }
+        }
+        if(direction = 0) { // move it down
+            do upperWall.drawBottom();
+            do upperWall.setSizeY(oldUpperSizeY + 1);
+            do lowerWall.eraseTop();
+            do lowerWall.setY(oldLowerY + 1);
+            do lowerWall.setSizeY(oldLowerSizeY - 1);
+        }
+        else { // move it up
+            do upperWall.eraseBottom();
+            do lowerWall.drawTop();
+            do upperWall.setSizeY(oldUpperSizeY - 1);
+            do lowerWall.setY(oldLowerY - 1);
+            do lowerWall.setSizeY(oldLowerSizeY + 1);
+        }
+        return;
+    }
+}

@@ -1,0 +1,19 @@
+class T{
+  field int _x;
+  constructor T new(int x){
+    let _x = x;
+    return this;
+  }
+
+  method void switch(T other){
+    var T tmp;
+    let tmp = this;
+    let this = other;
+    let other = tmp;
+    return;
+  }
+  
+  method int getX(){
+    return _x;
+  }
+}

@@ -1,0 +1,117 @@
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */
+class Memory {
+    static Array ram;
+    static Array freeList;
+
+    /** Initializes the class. */
+    function void init() {
+        var int ramLength;
+        let ram = 0;
+        let freeList = 2048;
+        let ramLength = 14336;
+
+        // index 0 --> next segment
+        // index 1 --> cur segment block size
+        let freeList[0] = null;
+        let freeList[1] = ramLength - 2;
+
+        return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+        var int segmentSize;
+        var Array segment;
+        // size needed
+        let segmentSize = size + 2;
+
+        if (freeList[1] > segmentSize) { //fit
+            let freeList[1] = freeList[1] - segmentSize;
+            let segment = freeList + 2 + freeList[1];
+            let segment[0] = null;
+            let segment[1] = size;
+        }
+        else {
+
+            while (freeList[1] < segmentSize) {
+                    let freeList = freeList[0];
+                }
+
+            let freeList[1] = freeList[1] - segmentSize;
+            let segment = freeList + 2 + freeList[1];
+            let segment[0] = null;
+            let segment[1] = size;
+        }
+
+        return segment + 2;
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+        var Array cur;
+        var Array previous, nextList, temp;
+        let cur = o - 2;
+        let previous = freeList;
+        let nextList = freeList[0];
+        //advance to the end/fit best
+        while (~(nextList = null) & (nextList < cur)) {
+            let previous = nextList;
+            let nextList = nextList[0];
+        }
+
+        if (nextList = 0) {
+            let cur[0] = null;
+            let previous[0] = cur;
+        }
+        if (~(nextList=0)){
+            let temp = previous[0];
+            let previous[0] = cur;
+            let cur[0] = temp;
+        }
+        //update cur
+        if ((cur + cur[1] + 2) = nextList) {
+            let cur[1] = cur[1] + nextList[1] + 2;
+            let cur[0] = nextList[0];
+        }
+
+        if ((previous + previous[1] + 2) = cur) {
+            let previous[1] = previous[1] + cur[1] + 2;
+            let previous[0] = cur[0];
+        }
+        return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+        return ram[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+        let ram[address] = value;
+        return;
+    }
+
+    /** return max value of Array o. */
+    function int max(Array o){
+        var Array s;
+        var int size, max,i;
+        let s=o-1;
+        let size=s[0];
+        let max=o[0];
+        let i=0;
+        while (~(i=size)){
+            if (o[i]>max){
+                let max=o[i];
+            }
+            let i=i+1;
+        }
+        return max;
+     }
+}

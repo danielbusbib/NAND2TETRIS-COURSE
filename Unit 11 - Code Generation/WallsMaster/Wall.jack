@@ -1,0 +1,98 @@
+/** Implements a graphical wall, represented by a rectangle */
+
+class Wall {
+    field int x, y; // the x and y of the top most corner of the wall
+    field int size_x, size_y; // the length in pixels of the wall
+    field boolean isUpper;
+
+    /** Constructs a new wall */
+    constructor Wall new(int Ax, int Ay, int Asize_y, boolean AisUpper) {
+        let x = Ax;
+        let y = Ay;
+        let size_x = 10;
+        let size_y = Asize_y;
+        let isUpper = AisUpper;
+        do draw();
+        return this;
+    }
+
+    /** Method getter for is upper */
+    method boolean isUpper() {
+        return isUpper;
+    }
+    
+    /** Method for returning this's x */
+    method int getX() {
+        return x;
+    }
+
+    /** Method for returning this's y */
+    method int getY() {
+        return y;
+    }
+    /** Method for setting this's y */
+    method void setY(int Ay) {
+        let y = Ay;
+        return;
+    }
+    /** Method for returning this's x */
+    method int getSizeX() {
+        return size_x;
+    }
+
+    /** Method for returning this's y */
+    method int getSizeY() {
+        return size_y;
+    }
+
+    /** Method for setting this's y size */
+    method void setSizeY(int newSizeY) {
+        let size_y = newSizeY;
+        return;
+    }
+
+    /** Disposes this wall. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Draws the wall on the screen */
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + size_x, y + size_y);
+        return;
+     }
+
+     /** Erases the wall from the screen. */
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + size_x, y + size_y);
+        return;
+    }
+
+    method void eraseBottom() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y + size_y - 1, x + size_x, y + size_y);
+        return;
+    }
+
+    method void eraseTop() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + size_x, y + 1);
+        return;
+    }
+
+    method void drawTop() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y - 1, x + size_x, y);
+        return;
+    }
+
+    method void drawBottom() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y + size_y, x + size_x, y + size_y + 1);
+        return;
+    }
+	
+}

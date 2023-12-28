@@ -1,0 +1,33 @@
+unixraz, itamarc
+===============================================================================
+Raz Bareli, ID 203488747, raz.bareli@mail.huji.ac.il
+Itamar Citrin, ID 209701853, itamar.citrin@mail.huji.ac.il
+===============================================================================
+
+                           Project 9 - High-Level Programming
+                           ----------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+Main.jack - Initializes a new walls game and runs it.
+Square.jack - Manages a graphical square in this game.
+Wall.jack - Implements a graphical wall, represented by a rectangle.
+MovingWall.jack - Implements a moving wall
+WallsGame.jack - Combines the square and the walls into a game of 5 levels.
+
+Remarks
+-------
+This is a game called Walls Master!
+The goal is to reach the right side of the screen.
+If you touch any wall during your journey - you'll find yourself back on the left side.
+Each time you do so, one death will be added to your death counter.
+press Space to advance to your right.
+Press q to quit the game.
+There are 3 possible speeds for the square. Press S to make it slower, F to make it faster.
+If you want to skip a level. press P.
+There are 7 levels in this game, see if you can finish them all and win the game!
+At the end of the game you will get a summery of the levels you've skipped, levels you won,
+and at what speed you won them (easy , medium or hard).
+Don't hesitate to contact us with your ideas for more cool levels!

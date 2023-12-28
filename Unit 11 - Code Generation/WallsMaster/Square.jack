@@ -1,0 +1,120 @@
+/** manages the square in the game */
+
+class Square {
+
+   field int x, y; // location of the square's top-left corner
+   field int size; // size of this square, in pixels
+   field boolean upOrDown;	//current direction of the square
+   
+   /** Constructs a new square with a given location and size. */
+   constructor Square new(int Ax, int Ay) {
+      
+	  let x = Ax;
+      let y = Ay;
+      let size = 30;
+	  let upOrDown = true; //true direction means down, false means up
+      do draw();
+      return this;
+   }
+
+   /** Resets the square to the top left corner. */
+   method void reset() {
+      do erase();
+      let x = 0;
+      let y = 0;
+      do draw();
+      return;
+   }
+
+   /** Disposes this square. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+	
+   /** Method for returning this's size */
+   method int getSize() {
+      return size;
+  }
+
+   /** Method for returning this's x */
+   method int getX() {
+      return x;
+  }
+
+  /** Method for returning this's y */
+  method int getY() {
+      return y;
+  }
+   
+	/** returns the distance this square has moved to the right. */
+	method int distance() { return (x+size); }
+	
+   /** Draws the square on the screen. */
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawRectangle(x, y, x + size, y + size);
+      return;
+   }
+
+   /** Erases the square from the screen. */
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawRectangle(x, y, x + size, y + size);
+      return;
+   }
+
+   /** Moves the square up by 2 pixels. */
+   method void moveUp() {
+      if (y > 1) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(x, (y + size) - 1, x + size, y + size);
+         let y = y - 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(x, y, x + size, y + 1);
+      }
+	   else {
+		   let upOrDown = true;
+	   }
+	  
+      return;
+   }
+
+   /** Moves the square down by 2 pixels. */
+   method void moveDown() {
+      if (y + size < 254) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(x, y, x + size, y + 1);
+         let y = y + 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(x, (y + size) - 1, x + size, y + size);
+      }
+	   else {
+		   let upOrDown = false;
+	   }
+      return;
+   }
+
+   /** Moves the square right by 2 pixels. */
+   method void moveRight() {
+      if ((x + size) < 510) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(x, y, x + 1, y + size);
+         let x = x + 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle((x + size) - 1, y, x + size, y + size);
+      }
+      return;
+   }
+   
+   /** Moves the square up or down, depending on it's direction variable */
+   method void oscillate(){
+      if (upOrDown) {
+         do moveDown();
+      }	
+      if (~upOrDown) {
+         do moveUp();
+      }
+	   return;
+	}
+}

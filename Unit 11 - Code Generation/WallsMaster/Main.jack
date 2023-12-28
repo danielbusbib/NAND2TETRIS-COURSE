@@ -1,0 +1,58 @@
+/** Initializes a new walls game and runs it. */
+
+class Main {
+    function void main() {
+        var WallsGame game;
+		var char key;
+		do Main.logo();
+		do Main.introduction();
+		while (~(key = 32) & ~(key = 81)) {
+			let key = Keyboard.keyPressed();
+		}
+		if(key = 81) { return; }
+		do Screen.clearScreen();
+        let game = WallsGame.new();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+	
+	/** draws the home screen for the game */
+	function void logo() {
+		var char key;
+		do WallsGame.drawMainLogo(100);
+		let key = 0;
+		while(~(key = 83)) {
+		   let key = Keyboard.keyPressed();
+		}
+		do Screen.clearScreen();
+		return;
+	 }
+	
+	/** Inits the screen for the introduction to the game */
+	function void introduction() {
+		do Screen.clearScreen();
+		do Output.moveCursor(9,0);
+		do Output.printString("* You need to reach the right side without touching the walls");
+		do Output.println();
+		do Output.println();
+		do Output.printString("* Move to the right by pressing space");
+		do Output.println();
+		do Output.println();
+		do Output.printString("* Quit the game by pressing q");
+		do Output.println();
+		do Output.println();
+		do Output.printString("* Press s for easier mode, or f for harder mode.");
+		do Output.println();
+		do Output.println();
+		do Output.printString("* If you're really bad at this, press p to skip a stage.");
+		do Output.println();
+		do Output.println();
+		do Output.printString("* To start, press Space");
+		do Output.println();
+		do Output.println();
+		do Output.printString("A game by Itamar Citrin & Raz Bareli");
+		do WallsGame.drawLogo(232);  
+		return;
+	}
+}

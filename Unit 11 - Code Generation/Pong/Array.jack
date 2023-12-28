@@ -1,0 +1,30 @@
+// This file is part of nand2tetris, as taught in The Hebrew University,
+// and was written by Aviv Yaish, and is published under the Creative 
+// Common Attribution-NonCommercial-ShareAlike 3.0 Unported License 
+// https://creativecommons.org/licenses/by-nc-sa/3.0/
+// It is an extension to the specifications given in  
+// https://www.nand2tetris.org (Shimon Schocken and Noam Nisan, 2017)
+// as allowed by the Creative Common Attribution-NonCommercial-ShareAlike 3.0 
+// File name: projects/12/Array.jack
+
+/**
+ * Represents an array.
+ * In the Jack language, arrays are instances of the Array class.
+ * Once declared, the array entries can be accessed using the usual
+ * syntax arr[i]. Each array entry can hold a primitive data type as 
+ * well as any object type. Different array entries can have different 
+ * data types.
+ */
+class Array {
+
+    /** Constructs a new Array of the given size. */
+    function Array new(int size) {
+        return Memory.alloc(size);
+    }
+
+    /** Disposes this array. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
