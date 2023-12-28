@@ -1,0 +1,34 @@
+bsbdaniel1234, noam.alt
+===============================================================================
+Daniel Busbib, ID 336224084, daniel.busbib@mail.huji.ac.il
+Noam Altshuler, ID 207406711 noam.altshuler@mail.huji.ac.il
+===============================================================================
+
+                           Project 12 - The Operating System
+                           ---------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+Array.jack - very simple implementation using memory class methods. 
+Keyboard.jack - implemented as described by Shimon in the lectures by using ‘do nothing’ on pressing and registering the key.  
+Math.jack - implemented via cool algorithms taught in the lectures and with the new shift ops we built in the course.
+ Also we added two_power array for fast access to the powers of 2 that we used in various occasions in our project. 
+Memory.jack - we implemented the first fit method as described in the lectures with a linked list. 
+Output.jack - we used all the numeric measures described in the book/imp notes to build the output. 
+Screen.jack - we used the smart valuation algorithm described in the lecture to build ‘draw line’ 
+and then used it to build the rest of the class, using a bit of math class for calculation. 
+String.jack - string implementation was quite straight forward as described in the lectures. 
+Sys.jack - in our wait function we took inspiration from c language implementation of ‘wait’ with the 200 timer.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.
